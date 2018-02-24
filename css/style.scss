@@ -1,0 +1,825 @@
+
+//----------------STYLING VARIABLES---------------
+//FONT FAMILIES
+$bodyFont: "Montserrat", serif;
+$headingFont: "Cookie", cursive;
+//SPACING
+$headingLetterSpacing: 1.3px;
+$subHeadLetterSpacing: 0.1px;
+//LINE-HEIGHT
+$subHeadLineHeight: 23px;
+//COLOURS
+$bodyColour: #ecebec;
+$deepPurple: #2D262E;
+$accentCol: #4DA4B7;
+//4DB79D #668189;
+//text colours
+$lightPurple: #F6F2FF;
+$bodyCopy: #705961;
+
+$sectionPadding: 8rem;
+$articlePadding: 2rem;
+
+//-------------------MIXINS-----------------------
+
+@mixin boxshadow($hor, $ver, $blur, $spr, $col) {
+  -webkit-box-shadow: $hor $ver $blur $spr $col;
+  -moz-box-shadow: $hor $ver $blur $spr $col;
+  box-shadow: $hor $ver $blur $spr $col;
+}
+
+.heading-letter-spacing {
+  letter-spacing: $headingLetterSpacing;
+}
+/*--LARGER SPACING BETWEEN SECTIONS --*/
+.margin-top-section {
+  margin-top:$sectionPadding;
+}
+.padding-top-section {
+  padding-top:$sectionPadding;
+}
+.padding-bottom-section {
+  padding-bottom:$sectionPadding;
+}
+
+/*---- SMALLER SPACES BETWEEN ARTICLES --*/
+
+.padding-top-article {
+  padding-top:$articlePadding;
+}
+
+.padding-bottom-article {
+  padding-bottom:$articlePadding;
+}
+.margin-top-article {
+  margin-top:$articlePadding;
+}
+.margin-bottom-article {
+  margin-bottom:$articlePadding;
+}
+
+.margin-bottom-section{
+  margin-bottom:$sectionPadding;
+}
+
+//--------------PAGE COMMONALITIES-------------------
+
+html,
+body {
+  margin:0;
+  padding:0;
+  height:100%;
+  background-color:$bodyColour;
+}
+body {
+  margin:0;
+  padding:0;
+  font: {
+    family: $bodyFont;
+  }
+}
+p {
+  color: $bodyCopy;
+}
+h1 {
+  @extend .padding-top-section;
+  @extend .heading;
+  font-weight:normal;
+}
+article, h5, {
+  @extend .padding-top-article;
+}
+
+img {
+  @extend .margin-top-article;
+}
+
+.centered-items {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/*-------------------INNER PAGES -----------------------*/
+.inner-page-hero {
+  width:100%;
+  height:20vh;
+  background-size:cover;
+}
+
+// -----------TYPOGRAPHY-------------------------
+.large-heading {
+  font-size:7rem;
+  font-family:$headingFont;
+  margin-bottom:0;
+}
+.heading {
+  @extend .heading-letter-spacing;
+  font: {
+    family: $headingFont;
+    size:6rem;
+    weight:bold;
+  }
+}
+
+.subhead {
+  letter-spacing: $subHeadLetterSpacing;
+  line-height:$subHeadLineHeight;
+  font-size:1.7rem;
+}
+.light-font {
+  color: $lightPurple;
+}
+//FONT STYLE AND WEIGHT
+.bold {
+  font-weight:700;
+}
+.medium-bold {
+  font-weight:500;
+}
+.italic {
+  font-style:italic;
+}
+//LOGO
+.logo {
+  width:300px;
+  transform:translateY(-50%);
+  position:absolute;
+  top:3%; left:0;
+  z-index:100;
+}
+
+.container-fluid {
+  padding:0;
+  margin:0;
+}
+/*SIDE NAV */
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    right:0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $lightPurple;
+    display: block;
+    transition: 0.3s;
+}
+
+#portfolio, #service-title, #service-1, #service-2, #about-title, #about-1, #about-2, #contact{
+  display:none;
+}
+/* When you mouse over the navigation links, change their color */
+.sidenav a:not(.title):hover, .offcanvas a:focus{
+    color:$accentCol;
+
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+.menu-btn{
+  position:absolute;
+  right:25px;
+  width:80px;
+  height: 80px;
+  z-index:200;
+}
+// .st1 {
+//   stroke:$deepPurple;
+// }
+// .menu-btn .st1, .menu-btn .st0  {
+//   stroke:$deepPurple;
+//   fill:$deepPurple;
+// }
+//
+// svg {
+//   fill:$deepPurple;
+// }
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-right .5s;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+.hidden-content {
+  display:none;
+}
+#mySidenav{
+  a {
+    width:100%;
+    display:block;
+    font-size:1.5rem;
+    text-align:right;
+  }
+  ul {
+    list-style-type:none;
+  }
+}
+
+#about-title.title, #service-title.title {
+    font-size:1rem;
+    color:lighten($deepPurple, 50%);
+}
+
+
+//BUTTONS
+.btn {
+  border-radius:0;
+  border:none;
+  text-transform:uppercase;
+  @extend .margin-top-article;
+}
+.btn-default {
+  border:none;
+  background-color:$deepPurple;
+  color:$lightPurple;
+  @extend .margin-bottom-section;
+  &:hover {
+    background-color:$lightPurple;
+    color:$deepPurple;
+    border:none;
+  }
+}
+
+
+.btn-primary {
+  border:none;
+  @extend .margin-top-article;
+  background-color:$accentCol;
+}
+
+
+
+.social-icons {
+  text-decoration:none;
+  color:$lightPurple;
+  position:absolute;
+  bottom:0;
+  right:0;
+}
+
+footer {
+  background:url('../img/golden-gate-bridge.jpg') no-repeat center;
+  max-width:100%;
+  background-attachment:fixed;
+  background-size:cover;
+  height:30vh;
+
+  display:flex;
+  align-items:flex-end;
+
+  h1, h3, h4, p {
+    @extend .light-font;
+  }
+  .fa {
+    padding-top:20px;
+    padding-right:30px;
+    color:$lightPurple;
+  }
+
+  .information {
+    position:relative;
+    top:20%;
+  }
+}
+/*---------------HOME PAGE----------------*/
+
+.home-hero {
+  height:100vh;
+  background: $deepPurple url('../img/wine-cellar.jpg') no-repeat right;
+  background-size:cover;
+  @extend .centered-items;
+    h1 {
+      font-size:10rem;
+    }
+    h1, p {
+      width:100%;
+    }
+  .black-overlay {
+    @extend .centered-items;
+  }
+}
+.hero-text {
+  padding:10px;
+}
+//SERVICE SECTION WITH icons
+.icon-container {
+  width:100%;
+  height:100%;
+  img {
+    margin:0;
+  }
+  h2 {
+    transform:translateY(-130%);
+    font-size:1.6rem;
+  }
+}
+.dark-section {
+  position:relative;
+  background-color:$deepPurple;
+  @extend .margin-top-section;
+  @extend .padding-bottom-section;
+  width:100%;
+  h2 {
+    @extend .padding-top-section;
+    @extend .light-font;
+  }
+}
+.image-slider {
+  position:relative;
+  .spotlight-work {
+    @include boxshadow(2px, 2px, 2px, 2px, rgba(0,0,0,0.5));
+    padding:0;
+  }
+}
+.circle {
+  display:inline-block;
+  margin:auto;
+  margin:30px;
+  width:25px; height:25px;
+  background:$lightPurple;
+  border-radius:50%;
+}
+//CIRCLE TWO IS ORIGINALLY ACTIVE
+.circle-2 {
+  background:$accentCol;
+}
+
+.longer-title {
+  margin-top: 3.3rem;
+  background-color:$bodyColour;
+}
+.workCaption {
+  width:100%;
+  height:100%;
+  position:relative;
+  top:300%;
+  margin-top:$sectionPadding;
+  background-color:$lightPurple;
+  padding: $articlePadding $sectionPadding;
+}
+/*-------------------PORTFOLIO *-----------------------*/
+.flex-container {
+  display:flex;
+  flex-flow:row wrap;
+}
+.item-container {
+  position: relative;
+  width: 25%;
+  margin:0;
+  padding:0;
+}
+.portfolio-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding:0;
+  margin:0;
+}
+.item-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background: rgba($accentCol, 0.9);
+  p {
+    color:$lightPurple;
+  }
+}
+.item-container:hover .item-overlay {
+  opacity: 1;
+}
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+/*-------------------PORTFOLIO ITEM --------------------*/
+.centered {
+  margin:auto;
+
+}
+/*---------------------SERVICES ----------------------*/
+.service-hero {
+  @extend .centered-items;
+  background:url('../img/hero-service-page.jpg') no-repeat;
+  @extend .inner-page-hero;
+}
+.service-cover {
+  @extend .margin-top-section;
+  width:100%;
+  height:500px;
+  @extend .margin-bottom-section;
+}
+.service-img {
+  object-fit:contain;
+}
+.arrow-right {
+  width: 0;
+  height: 0;
+  border-top: 60px solid transparent;
+  border-bottom: 60px solid transparent;
+  border-left: 60px solid green;
+}
+.page-descript {
+  padding: $articlePadding;
+  p {
+    font-size:1.5rem;
+  }
+}
+.service {
+  width:90%;
+  margin-top:$sectionPadding;
+  @extend .margin-bottom-section;
+  h2 {
+    font-size:5rem;
+    padding-bottom:2%;
+  }
+  p {
+    font-size:1.4rem;
+  }
+  display:flex;
+  align-items:center;
+
+}
+.service-content {
+  width:100%;
+  margin:auto;
+  margin-left:5%;
+  margin-top:10%;
+}
+.service-icon {
+  width:75%;
+  @extend .margin-bottom-article;
+  @include boxshadow(-1px, 0, 7px, 1px, rgba(0,0,0,0.5));
+}
+.banner {
+  @extend .margin-top-section;
+  @extend .margin-bottom-section;
+  h2 {
+    font-size:5rem;
+    @extend .margin-bottom-article;
+  }
+}
+/*-------RATES------*/
+.accent-container {
+  background-color:$accentCol;
+  margin-bottom:$articlePadding;
+  @include boxshadow(-1px, 0, 7px, 1px, rgba(0,0,0,0.5));
+  h1 {
+    padding:0;
+  }
+  h1, h3, {
+    @extend .light-font;
+  }
+}
+.dark-container {
+  background-color:$deepPurple;
+  padding:$sectionPadding;
+  h1,td, th {
+    padding:0;
+    @extend .light-font;
+  }
+}
+.packages {
+  @extend .margin-top-section;
+  h2 {
+    color:$lightPurple;
+    margin-bottom:4%;
+  }
+}
+/*----------------ABOUT -----------------*/
+.img-divider {
+  width:100vw;
+  height:30vh;
+  background:url('../img/skyline-divider.jpg') no-repeat;
+  background-size:cover;
+  background-attachment:fixed;
+}
+.service-page {
+  article {
+    @extend .margin-bottom-section;
+  }
+  .row {
+    @extend .padding-top-article;
+    @extend .padding-bottom-section;
+  }
+  h1 {
+    @extend .margin-top-section;
+  }
+}
+/*---------_STRATEGY------*/
+.strategy-img {
+  h1, h2, p{
+    @extend .light-font;
+  }
+  h2 {
+    font-size:2rem;
+  }
+}
+.strategy-item {
+  width:100%;
+  height:100%;
+  padding:20px;
+  background-color:$lightPurple;
+  @include boxshadow(2px, 2px, 2px, 2px, rgba(0,0,0,0.5));
+}
+.item-content {
+  border: 2px solid $accentCol;
+  padding:10px;
+}
+
+//-----------------TEAM ----------------*/
+.team-member-info {
+  @extend .margin-top-section;
+  width:33%;
+  h1 {
+    @extend .margin-top-section;
+  }
+  h1, h2, p {
+    padding: 0 5%;
+  }
+}
+.team-member-image {
+  position:relative;
+}
+.team-member-image:hover .item-overlay {
+    opacity: 1;
+  }
+
+.boxspring-team {
+  width:100%;
+}
+/*-----------------CONTACT -------------*/
+.accent-container{
+  padding:$articlePadding;
+  label {
+    padding-bottom:10px;
+  }
+}
+.black-overlay {
+  width:100%;
+  height:100%;
+  background-color:rgba(0,0,0,0.7);
+  background-size:cover;
+}
+.contact-box {
+  h2, p {
+    color: $lightPurple;
+  }
+  padding: 100px 40px;
+}
+#my-google-map {
+  width:100%;
+}
+.navbar-header {
+  z-index:100;
+}
+.full-bg {
+  width: 100%;
+  background: url('../img/new-york-city.jpg') no-repeat;
+  background-size:cover;
+  h1, label {
+    @extend .light-font;
+  }
+  h1 {
+    margin:$sectionPadding;
+  }
+}
+.form-inputs:not(.btn) {
+  width:90%;
+  padding-left:15px;
+}
+.form-cont {
+  background: rgba($lightPurple, 0.9);
+  padding:$articlePadding;
+  .form-label {
+    margin-bottom: $articlePadding;
+    color: $deepPurple;
+  }
+  h3 {
+    margin-bottom:$articlePadding;
+  }
+}
+
+textarea {
+  max-width:100%;
+}
+
+/*---------ADMIN SECTIONS */
+
+.thumbnail {
+  width:100px;
+  height:100px;
+}
+
+.user-select {
+  width:40%;
+  margin:auto;
+  form {
+    margin-left:10%;
+  }
+}
+
+#show-img {
+  width:200px;
+}
+
+// 5 COLUMNS
+.col-xs-15,
+.col-sm-15,
+.col-md-15,
+.col-lg-15 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.col-xs-15 {
+    width: 20%;
+    float: left;
+}
+@media (min-width: 768px) {
+    .col-sm-15 {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 992px) {
+    .col-md-15 {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 1200px) {
+    .col-lg-15 {
+        width: 20%;
+        float: left;
+    }
+}
+
+@media (max-width: 600px) {
+  //responsive nav changes
+  .collapse.in {
+    background-color:$accentCol;
+    width:100vw;
+    a {
+      color:white;
+    }
+  }
+
+}
+
+//PHONES
+@media screen and (max-width:600px) {
+
+  .btn {
+    margin-bottom:5%;
+  }
+  .logo {
+    top:3%;
+    left:-10%;
+  }
+  .menu-btn {
+    top:0;
+  }
+  .btn-default {
+    width:100%;
+  }
+  .btn-primary {
+    width:100%;
+  }
+
+ .page-descript, h1 {
+    margin-top:5%;
+    padding-top:5%;
+  }
+  .page-heading h1 {
+    margin-top:15%;
+  }
+  //HEADING
+  .large-heading, h1, .home-hero h1 {
+    font-size:4rem;
+    margin-bottom:5%;
+    margin-top:15%;
+  }
+  .subhead {
+    margin-bottom:3rem;
+  }
+
+  .heading {
+   margin-top:$sectionPadding;
+  }
+  /*-------HOME PAGE --------*/
+  .home-hero {
+    height:80vh;
+    width:100%;
+  }
+
+  div.workCaption.text-center {
+    margin-top:15px;
+  }
+
+  .strategy-icon {
+    margin:auto;
+    left:25%;
+  }
+
+
+
+  //---------SERVICE---------
+  .service {
+    display:block
+  }
+
+  .service-cover {
+    margin-bottom:5%;
+    height:100%;
+  }
+
+  .section-service {
+    margin-top:0;
+  }
+
+  .service-icon {
+    width:100%;
+  }
+
+  .banner {
+    width:100%;
+  }
+  hr.styled {
+    position:relative;
+    top:50px;
+	  height: 6px;
+	  background: url(http://ibrahimjabbari.com/english/images/hr-11.png) repeat-x 0 0;
+    border: 0;
+  }
+
+  //-------PORTFOLIO--------
+  .item-container {
+    width:100%;
+  }
+
+  .team-member-info {
+    width:100%;
+  }
+
+
+}
+//TABLET
+@media screen and (min-width:601px) {
+    //PORTFOLIO
+  .item-container {width:50%;}
+
+  div.workCaption.text-center {
+        margin-top:35px;
+    }
+
+
+  }
+  // h1 {
+  //   font-size:1.4rem;
+  // }
+
+//DESKTOP
+@media screen and (min-width:768px) {
+  .item-container {width:25%;}
+
+}
+//LARGE SCREEN
+@media screen and (min-width:1200px) {
+
+}
